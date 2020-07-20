@@ -87,19 +87,17 @@ class Phone(BaseModelGeneric):
 class Profile(BaseModelUnique):
     gender = models.PositiveIntegerField(choices=constant.GENDER_CHOICES,
                                          default=1)
-    background_cover = models.ImageField(
-        storage=storage.COVER_STORAGE,
-        max_length=300,
-        blank=True,
-        null=True
-    )
-    avatar = models.ImageField(
-        storage=storage.AVATAR_STORAGE,
-        max_length=300,
-        blank=True,
-        null=True
-    )
     birth_date = models.DateField(blank=True, null=True)
+    marital_status = models.PositiveIntegerField(
+        choices=constant.MARITAL_STATUS_CHOICES, default=1)
+    citizenship = models.PositiveIntegerField(
+        choices=constant.CITIZENSHIP, default=1)
+    background_story = models.TextField(blank=True, null=True)
+    phones = models.ManyToManyField(Phone, blank=True)
+    addresses = models.ManyToManyField(Address, blank=True)
+    last_education = models.PositiveIntegerField(
+        choices=constant.LAST_EDUCATION_CHOICES, default=2)
+    profession = models.CharField(max_length=40, blank=True, null=True)
     id_card = models.FileField(
         max_length=300,
         storage=storage.FILE_STORAGE,
@@ -114,8 +112,6 @@ class Profile(BaseModelUnique):
     )
     npwp_num = models.CharField(max_length=40, blank=True, null=True)
     id_card_num = models.CharField(max_length=40, blank=True, null=True)
-    addresses = models.ManyToManyField(Address, blank=True)
-    phones = models.ManyToManyField(Phone, blank=True)
     type = models.PositiveIntegerField(
         choices=constant.PROFILE_TYPE_CHOICES, default=3)
     reject_reason = models.PositiveIntegerField(
@@ -166,19 +162,6 @@ class Profile(BaseModelUnique):
         today = date.today()
         return today.year - self.birth_date.year
 
-    def get_total_invested(self):
-        from core.structures.project.models import Fund
-        total_invested = Fund.objects.filter(
-            created_by_id=self.created_by_id,
-            status=1
-        ).aggregate(
-            models.Sum('amount')
-        )['amount__sum']
-        if total_invested:
-            return 'Rp.{:,.0f},-'.format(int(total_invested))
-        else:
-            return 'Rp.{:,.0f},-'.format(0)
-
     def get_total_topup(self):
         from enterprise.structures.transaction.models import TopUp
         total_topup = TopUp.objects.filter(
@@ -215,14 +198,6 @@ class Profile(BaseModelUnique):
             return 'Rp.{:,.0f},-'.format(int(total_withdraw))
         else:
             return 'Rp.{:,.0f},-'.format(0)
-
-    def get_project_type(self):
-        from core.structures.project.models import Project
-        project = Project.objects.filter(
-            created_by_id=self.created_by_id
-        ).all()
-        if project:
-            return project
 
 
 class ProfileDetail(BaseModelGeneric):
@@ -307,7 +282,7 @@ class Company(BaseModelGeneric):
         if self.cover:
             return self.cover.url
         else:
-            return NO_IMAGE_URL
+            return constant.NO_IMAGE_URL
 
     class Meta:
         verbose_name = _('Company')

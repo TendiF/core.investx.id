@@ -176,6 +176,25 @@ ARP_ANALYSIS_CHOICES = (
     (2, _('Account Payable')),
 )
 
+MARITAL_STATUS_CHOICES = (
+    (1, _('Single')),
+    (2, _('Widow/Widower')),
+    (3, _('Divorced')),
+    (4, _('Married'))
+)
+
+CITIZENSHIP = (
+    (1, _('Indonesian Citizen')),
+    (2, _('Foreigners'))
+)
+
+LAST_EDUCATION_CHOICES = (
+    (1, _('Undergraduate')),
+    (2, _('Bachelor')),
+    (3, _('Master')),
+    (4, _('Doctoral'))
+)
+
 NO_IMAGE_URL = "https://a75f8eca1cb38315333c-678aa23ddc581c009f308cf5d4dc9c11.ssl.cf6.rackcdn.com/defaults/NO_IMAGE.png"
 NO_AVATAR_1_URL = "https://a75f8eca1cb38315333c-678aa23ddc581c009f308cf5d4dc9c11.ssl.cf6.rackcdn.com/defaults/AVATAR_1.png"
 NO_AVATAR_2_URL = "https://a75f8eca1cb38315333c-678aa23ddc581c009f308cf5d4dc9c11.ssl.cf6.rackcdn.com/defaults/AVATAR_2.png"
