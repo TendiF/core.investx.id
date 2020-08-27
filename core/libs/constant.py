@@ -125,8 +125,8 @@ LOAN_TYPE_CHOICES = (
 )
 
 PROFILE_TYPE_CHOICES = (
-    (1, _('Borrower')),
-    (2, _('Lender')),
+    (1, _('Startup')),
+    (2, _('Investor')),
     (3, _('Undefined'))
 )
 
@@ -193,6 +193,139 @@ LAST_EDUCATION_CHOICES = (
     (2, _('Bachelor')),
     (3, _('Master')),
     (4, _('Doctoral'))
+)
+
+PROFESSION_CHOICES = (
+    (1, _('Unemployed')),
+    (2, _('Student')),
+    (3, _('Retired')),
+    (4, _('Government Employees')),
+    (5, _('General Employees')),
+    (6, _('Entrepreneur'))
+)
+
+JOB_INDUSTRY_CHOICES = (
+    (1, _('Accountancy, Banking and Finance')),
+    (2, _('Business, Consulting and Management')),
+    (3, _('Charity and Voluntary Work')),
+    (4, _('Creative Arts and Design')),
+    (5, _('Engineering and Manufacturing')),
+    (6, _('Environment and Agriculture')),
+    (7, _('Healthcare')),
+    (8, _('Hospitality and Events Management')),
+    (9, _('Information Technology')),
+    (10, _('Law')),
+    (11, _('Law Enforcement and Security')),
+    (12, _('Leisure, Sport and Tourism')),
+    (13, _('Marketing, Advertising and PR')),
+    (14, _('Media and Internet')),
+    (15, _('Property and Construction')),
+    (16, _('Public Services and Administration')),
+    (17, _('Recruitment and HR')),
+    (18, _('Retail')),
+    (19, _('Sales')),
+    (20, _('Science and Pharmaceuticals')),
+    (21, _('Social Care')),
+    (22, _('Teacher Training and Education')),
+    (23, _('Transport and Logistics'))
+)
+
+MONTHLY_SALARY_CHOICES = (
+    (1, _('1.000.000 - 4.999.999')),
+    (2, _('5.000.000 - 9.999.999')),
+)
+
+INCOME_SOURCE_CHOICES = (
+    (1, _('Active Income')),
+    (2, _('Passive Income')),
+    (3, _('Portfolio Income'))
+)
+
+BANK_NAME_CHOICES = (
+    (1, 'Mandiri'),
+    (2, 'BCA'),
+    (3, 'BRI'),
+    (4, 'BNI')
+)
+
+BUDGET_PREFERENCE_CHOICES = (
+    (1, _('1.000.000 - 4.999.999')),
+    (2, _('5.000.000 - 9.999.999')),
+)
+
+RISK_PREFERENCE_CHOICES = (
+    (1, _('High')),
+    (2, _('Medium')),
+    (3, _('Low'))
+)
+
+INFORMATION_SOURCE_CHOICES = (
+    (1, _("Friend's recommendation")),
+    (2, _("Post on Social Media")),
+    (3, _("Advertisement")),
+    (4, _("News Articles"))
+)
+
+BUSINESS_TYPE_CHOICES = (
+    (1, _("Industry")),
+    (2, _("Trading")),
+    (3, _("Services")),
+    (4, _("Agrarian")),
+    (5, _("Livestock"))
+)
+
+DATA_COLLECTION_SYSTEM_CHOICES = (
+    (1, _("Computerized/Accounting Software")),
+    (2, _("Simple Bookkeeping Notes/Post")),
+    (3, _("Documentary Evidence Only")),
+    (4, _("None"))
+)
+
+LOAN_REPUTATION_CHOICES = (
+    (1, _("No loan")),
+    (2, _("Have a current loan")),
+    (3, _("Ever had a problem but paid")),
+    (4, _("Currently had a problem"))
+)
+
+MARKET_POSITION_CHOICES = (
+    (1, _("Local market leader")),
+    (2, _("Able to compete")),
+    (3, _("Trying to compete")),
+    (4, _("Unable to compete"))
+)
+
+FUTURE_STRATEGY_CHOICES = (
+    (1, _("Owner has long term milestones & infrastructure is ready")),
+    (2, _("Milestones are being made & infrastructure are being strengthened")),
+    (3, _("Emphasize more short-term strategies for optimal")),
+    (4, _("Case by case strategy to be effective"))
+)
+
+LOCATION_STATUS_CHOICES = (
+    (1, _("Owned / Rent > 5 Years")),
+    (2, _("Rent 2 to 5 Years")),
+    (3, _("Rent < 2 Years")),
+    (4, _("Monthly Rent"))
+)
+
+COMPETITION_LEVEL_CHOICES = (
+    (1, _("Able to win the competition")),
+    (2, _("Able to compete but not the market leader")),
+    (3, _("Trying to compete but not the market leader"))
+)
+
+MANAGERIAL_SKILL_CHOICES = (
+    (1, _("Owner / management expertise on this business")),
+    (2, _("Owner / management is new to this business but has experience in similar businesses")),
+    (3, _("Owner / management has never been in this business but is in another sector")),
+    (4, _("Owner / management has no track record"))
+)
+
+TECHNICAL_SKILL_CHOICES = (
+    (1, _("Staff expertise on this business")),
+    (2, _("Staff is new to this business but has experience in similar business")),
+    (3, _("Staff has no track record"))
 )
 
 NO_IMAGE_URL = "https://a75f8eca1cb38315333c-678aa23ddc581c009f308cf5d4dc9c11.ssl.cf6.rackcdn.com/defaults/NO_IMAGE.png"
