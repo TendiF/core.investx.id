@@ -183,7 +183,7 @@ MARITAL_STATUS_CHOICES = (
     (4, _('Married'))
 )
 
-CITIZENSHIP = (
+CITIZENSHIP_CHOICES = (
     (1, _('Indonesian Citizen')),
     (2, _('Foreigners'))
 )
@@ -231,8 +231,8 @@ JOB_INDUSTRY_CHOICES = (
 )
 
 MONTHLY_SALARY_CHOICES = (
-    (1, _('1.000.000 - 4.999.999')),
-    (2, _('5.000.000 - 9.999.999')),
+    (1, _('<500.000.000')),
+    (2, _('>500.000.000')),
 )
 
 INCOME_SOURCE_CHOICES = (

@@ -107,7 +107,7 @@ class Profile(BaseModelUnique):
     marital_status = models.PositiveIntegerField(
         choices=constant.MARITAL_STATUS_CHOICES, default=1)
     citizenship = models.PositiveIntegerField(
-        choices=constant.CITIZENSHIP, default=1)
+        choices=constant.CITIZENSHIP_CHOICES, default=1)
     background_story = models.TextField(blank=True, null=True)
     phones = models.ManyToManyField(Phone, blank=True)
     addresses = models.ManyToManyField(Address, blank=True)

@@ -97,7 +97,7 @@ def application_submit_email(email, user):
     email_template_name = html_email_template_name
 
     context = {
-        'name' : user.full_name
+        'name': user.full_name
     }
 
     send_mail(
@@ -118,7 +118,7 @@ def application_approved_email(request, project):
 
     email = project.owned_by.email
     context = {
-        'name' : project.owned_by.full_name
+        'name': project.owned_by.full_name
     }
 
     send_mail(
@@ -129,6 +129,7 @@ def application_approved_email(request, project):
         email
     )
     offer_letter_email(request, project)
+
 
 def offer_letter_email(request, project):
     # from enterprise.libs.email import send_mail
@@ -159,6 +160,7 @@ def offer_letter_email(request, project):
         filename
     )
 
+
 def application_rejected_email(email, user):
     from enterprise.libs.email import send_mail
     from django.conf import settings
@@ -168,7 +170,7 @@ def application_rejected_email(email, user):
     email_template_name = html_email_template_name
 
     context = {
-        'name' : user.full_name
+        'name': user.full_name
     }
 
     send_mail(
@@ -178,6 +180,7 @@ def application_rejected_email(email, user):
         context,
         email
     )
+
 
 def application_publish_email(email, user):
     from enterprise.libs.email import send_mail
@@ -188,7 +191,7 @@ def application_publish_email(email, user):
     email_template_name = html_email_template_name
 
     context = {
-        'name' : user.full_name
+        'name': user.full_name
     }
 
     send_mail(
@@ -198,6 +201,7 @@ def application_publish_email(email, user):
         context,
         email
     )
+
 
 def application_unpublish_email(email, user):
     from enterprise.libs.email import send_mail
@@ -208,7 +212,7 @@ def application_unpublish_email(email, user):
     email_template_name = html_email_template_name
 
     context = {
-        'name' : user.full_name
+        'name': user.full_name
     }
 
     send_mail(
@@ -218,6 +222,7 @@ def application_unpublish_email(email, user):
         context,
         email
     )
+
 
 def application_disbursed_email(email, cc, project):
     from enterprise.libs.email import send_mail
