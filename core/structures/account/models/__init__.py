@@ -229,7 +229,7 @@ class Company(BaseModelGeneric):
     average_monthly_turnover_last_year = models.IntegerField(blank=True, null=True)
     average_monthly_profit_last_year = models.IntegerField(blank=True, null=True)
     total_debt = models.IntegerField(blank=True, null=True)
-    bank = models.ManyToManyField(Bank, blank=True)
+    bank_account = models.ManyToManyField(BankAccount, blank=True)
     paid_up_capital = models.IntegerField(blank=True, null=True)
     book_value_per_share = models.IntegerField(blank=True, null=True)
 
