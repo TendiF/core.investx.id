@@ -12,6 +12,7 @@ from django.conf import settings
 from enterprise.structures.common.models import File
 from enterprise.structures.common.models.base import BaseModelGeneric, BaseModelUnique
 from enterprise.structures.authentication.models import User, EmailVerification
+from enterprise.structures.transaction.models import BankAccount
 from enterprise.libs import storage
 
 from core.libs import constant
@@ -40,22 +41,6 @@ class Regency(models.Model):
     class Meta:
         verbose_name = _('Regency')
         verbose_name_plural = _('Regencies')
-
-
-class Bank(BaseModelGeneric):
-    bank_name = models.PositiveIntegerField(
-        choices=constant.BANK_NAME_CHOICES, default=1)
-    bank_branch_office = models.CharField(max_length=150, blank=True, null=True)
-    account_holder_name = models.CharField(max_length=150, blank=True, null=True)
-    account_number = models.CharField(max_length=20, blank=True, null=True)
-
-    def __str__(self):
-        return self.bank_name
-
-    class Meta:
-        verbose_name = _('Bank')
-        verbose_name_plural = _('Banks')
-
 
 class Address(BaseModelGeneric):
     name = models.CharField(max_length=255)
@@ -111,9 +96,6 @@ class Profile(BaseModelUnique):
     background_story = models.TextField(blank=True, null=True)
     phones = models.ManyToManyField(Phone, blank=True)
     addresses = models.ManyToManyField(Address, blank=True)
-    # profession = models.CharField(max_length=40, blank=True, null=True)
-    # type = models.PositiveIntegerField(
-    #     choices=constant.PROFILE_TYPE_CHOICES, default=3)
 
     # EDUCATION & PROFESSION
     last_education = models.PositiveIntegerField(
@@ -150,7 +132,7 @@ class Profile(BaseModelUnique):
     )
 
     # BANK
-    bank = models.ManyToManyField(Bank, blank=True)
+    bank_account = models.ManyToManyField(BankAccount, blank=True)
 
     # PREFERENCE
     budget_preference = models.PositiveIntegerField(
@@ -159,28 +141,9 @@ class Profile(BaseModelUnique):
         choices=constant.RISK_PREFERENCE_CHOICES, default=2)
     information_source = models.PositiveIntegerField(
         choices=constant.INFORMATION_SOURCE_CHOICES, default=1)
-    # reject_reason = models.PositiveIntegerField(
-    #     choices=constant.PROFILE_REJECT_REASON_CHOICES, blank=True, null=True)
 
     def __str__(self):
         return self.owned_by.nick_name
-
-    # def get_avatar(self):
-    #     if self.avatar:
-    #         return self.avatar.url
-    #     else:
-    #         if self.gender == 1:
-    #             return constant.NO_AVATAR_2_URL
-    #         return constant.NO_AVATAR_1_URL
-    #
-    # def get_avatar_2x(self):
-    #     return self.get_avatar()
-
-    # def get_cover(self):
-    #     if self.background_cover:
-    #         return self.background_cover.url
-    #     else:
-    #         return constant.NO_IMAGE_URL
 
     def get_id_card(self):
         if self.id_card:
@@ -313,82 +276,6 @@ class ProfileDetail(BaseModelGeneric):
     class Meta:
         verbose_name = _('Profile Detail')
         verbose_name_plural = _('Profile Details')
-
-
-class CompanySector(BaseModelGeneric):
-    display_name = models.CharField(max_length=300)
-    short_name = models.SlugField(max_length=300)
-    description = models.TextField(blank=True, null=True)
-
-    def __str__(self):
-        return self.display_name
-
-    class Meta:
-        verbose_name = _('Company Sector')
-        verbose_name_plural = _('Company Sectors')
-
-
-# class Company(BaseModelGeneric):
-#     display_name = models.CharField(max_length=300)
-#     short_name = models.SlugField(max_length=300)
-#     phone = models.CharField(max_length=100)
-#     staffs = models.ManyToManyField(User, blank=True)
-#
-#     registration_number = models.CharField(max_length=100)
-#     type = models.PositiveIntegerField(choices=constant.COMPANY_TYPE_CHOICES)
-#     country = models.CharField(
-#         max_length=3,
-#         choices=constant.COUNTRY_CHOICES,
-#         default='IDN')
-#     year_built = models.PositiveIntegerField()
-#     sector = models.ForeignKey(CompanySector, on_delete=models.CASCADE)
-#
-#     logo = models.ImageField(
-#         storage=storage.LOGO_STORAGE,
-#         max_length=300,
-#         blank=True,
-#         null=True
-#     )
-#     cover = models.ImageField(
-#         storage=storage.COVER_STORAGE,
-#         max_length=300,
-#         blank=True,
-#         null=True
-#     )
-#     website_url = models.URLField(blank=True, null=True)
-#     description = models.TextField(blank=True, null=True)
-#     address = models.ForeignKey(
-#         Address, on_delete=models.CASCADE, blank=True, null=True)
-#
-#     def __str__(self):
-#         return self.display_name
-#
-#     def is_executive(self, user):
-#         return self.executive.pk == user.pk
-#
-#     def is_staff(self, user):
-#         return user.id in self.staffs.values_list('id', flat=True)
-#
-#     def get_short_description(self):
-#         return '%s . . .' % self.description[0:150]
-#
-#     def get_logo(self):
-#         if self.logo:
-#             return self.logo.url
-#         return None
-#
-#     def get_type(self):
-#         return dict(constant.COMPANY_TYPE_CHOICES)[self.type]
-#
-#     def get_cover(self):
-#         if self.cover:
-#             return self.cover.url
-#         else:
-#             return constant.NO_IMAGE_URL
-#
-#     class Meta:
-#         verbose_name = _('Company')
-#         verbose_name_plural = _('Companies')
 
 
 class CompanyDetail(BaseModelGeneric):
