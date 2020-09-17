@@ -62,12 +62,6 @@ setup(
     # requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
     install_requires=[
-        'Django==2.1',
-        'djangorestframework==3.8.2',
-        'timeago==1.0.8',
-        'psycopg2==2.7.5',
-        'postgis==1.0.4',
-        'arrow==0.12.1'
     ],
 
     # List additional groups of dependencies here (e.g. development dependencies).
