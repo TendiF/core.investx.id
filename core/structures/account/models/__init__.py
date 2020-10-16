@@ -42,6 +42,7 @@ class Regency(models.Model):
         verbose_name = _('Regency')
         verbose_name_plural = _('Regencies')
 
+
 class Address(BaseModelGeneric):
     name = models.CharField(max_length=255)
     address = models.TextField()
@@ -86,6 +87,7 @@ class Phone(BaseModelGeneric):
 
 class Profile(BaseModelUnique):
     nick_name = models.CharField(_('nick name'), max_length=150, blank=True, null=True)
+    avatar = models.URLField(blank=True, null=True)
     gender = models.PositiveIntegerField(choices=constant.GENDER_CHOICES,
                                          default=1)
     birth_date = models.DateField(blank=True, null=True)
@@ -260,6 +262,11 @@ class Company(BaseModelGeneric):
     )
     video_url = models.URLField(blank=True, null=True)
 
+    # Campaign
+    status = models.PositiveIntegerField(
+        choices=constant.COMPANY_STATUS_CHOICES, default=1)
+    time_limit = models.PositiveIntegerField(default=60, null=True, blank=True)
+
     class Meta:
         verbose_name = _('Company')
         verbose_name_plural = _('Companies')
@@ -289,3 +296,14 @@ class CompanyDetail(BaseModelGeneric):
     class Meta:
         verbose_name = _('Company Detail')
         verbose_name_plural = _('Company Details')
+
+
+class Favorite(BaseModelGeneric):
+    company = models.ForeignKey(Company, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.company.name
+
+    class Meta:
+        verbose_name = _('Favorite')
+        verbose_name_plural = _('Favorites')

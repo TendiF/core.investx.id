@@ -328,6 +328,19 @@ TECHNICAL_SKILL_CHOICES = (
     (3, _("Staff has no track record"))
 )
 
+COMPANY_STATUS_CHOICES = (
+    (1, _("Under Review")),
+    (2, _("Approved")),
+    (3, _("Pre-Listing")),
+    (4, _("Listing"))
+)
+
+CAMPAIGN_STATUS_CHOICES = (
+    (1, _("Funding")),
+    (2, _("Complete")),
+    (3, _("Dividend"))
+)
+
 NO_IMAGE_URL = "https://a75f8eca1cb38315333c-678aa23ddc581c009f308cf5d4dc9c11.ssl.cf6.rackcdn.com/defaults/NO_IMAGE.png"
 NO_AVATAR_1_URL = "https://a75f8eca1cb38315333c-678aa23ddc581c009f308cf5d4dc9c11.ssl.cf6.rackcdn.com/defaults/AVATAR_1.png"
 NO_AVATAR_2_URL = "https://a75f8eca1cb38315333c-678aa23ddc581c009f308cf5d4dc9c11.ssl.cf6.rackcdn.com/defaults/AVATAR_2.png"
