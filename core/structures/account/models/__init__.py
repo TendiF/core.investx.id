@@ -87,7 +87,12 @@ class Phone(BaseModelGeneric):
 
 class Profile(BaseModelUnique):
     nick_name = models.CharField(_('nick name'), max_length=150, blank=True, null=True)
-    avatar = models.URLField(blank=True, null=True)
+    avatar = models.FileField(
+        max_length=300,
+        storage=storage.FILE_STORAGE,
+        blank=True,
+        null=True
+    )
     gender = models.PositiveIntegerField(choices=constant.GENDER_CHOICES,
                                          default=1)
     birth_date = models.DateField(blank=True, null=True)
