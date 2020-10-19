@@ -93,6 +93,12 @@ class Profile(BaseModelUnique):
         blank=True,
         null=True
     )
+    background_cover = models.FileField(
+        max_length=300,
+        storage=storage.FILE_STORAGE,
+        blank=True,
+        null=True
+    )
     gender = models.PositiveIntegerField(choices=constant.GENDER_CHOICES,
                                          default=1)
     birth_date = models.DateField(blank=True, null=True)
@@ -139,7 +145,7 @@ class Profile(BaseModelUnique):
     )
 
     # BANK
-    bank_account = models.ManyToManyField(BankAccount, blank=True)
+    bank_accounts = models.ManyToManyField(BankAccount, blank=True)
 
     # PREFERENCE
     budget_preference = models.PositiveIntegerField(
