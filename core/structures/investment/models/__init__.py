@@ -33,15 +33,18 @@ class CompanyCampaign(BaseModelGeneric):
     def __str__(self):
         return self.company.name
 
+    def get_investment(self, obj):
+        return Investment.objects.filter(campaign=obj).all()
+
     class Meta:
         verbose_name = _("Company Campaign")
         verbose_name_plural = _("Company Campaigns")
 
 
 class Investment(BaseModelGeneric):
-    campaign = models.ForeignKey(CompanyCampaign, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    company = models.ForeignKey(Company, on_delete=models.CASCADE)
+    campaign = models.ForeignKey(CompanyCampaign, on_delete=models.CASCADE, null=True, blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    company = models.ForeignKey(Company, on_delete=models.CASCADE, null=True, blank=True)
     amount = models.IntegerField(blank=True, null=True)
     dividend = models.IntegerField(blank=True, null=True, default=0)
 
