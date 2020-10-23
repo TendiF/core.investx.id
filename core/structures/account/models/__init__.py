@@ -214,6 +214,7 @@ class Company(BaseModelGeneric):
     # General
     name = models.CharField(max_length=150, blank=True, null=True)
     trademark = models.CharField(max_length=150, blank=True, null=True)
+    logo = models.URLField(blank=True, null=True)
     business_type = models.PositiveIntegerField(
         choices=constant.BUSINESS_TYPE_CHOICES, default=1)
     business_subtype = models.CharField(max_length=150, blank=True, null=True)
