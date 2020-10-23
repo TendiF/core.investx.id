@@ -87,7 +87,18 @@ class Phone(BaseModelGeneric):
 
 class Profile(BaseModelUnique):
     nick_name = models.CharField(_('nick name'), max_length=150, blank=True, null=True)
-    avatar = models.URLField(blank=True, null=True)
+    avatar = models.FileField(
+        max_length=300,
+        storage=storage.FILE_STORAGE,
+        blank=True,
+        null=True
+    )
+    background_cover = models.FileField(
+        max_length=300,
+        storage=storage.FILE_STORAGE,
+        blank=True,
+        null=True
+    )
     gender = models.PositiveIntegerField(choices=constant.GENDER_CHOICES,
                                          default=1)
     birth_date = models.DateField(blank=True, null=True)
@@ -134,7 +145,7 @@ class Profile(BaseModelUnique):
     )
 
     # BANK
-    bank_account = models.ManyToManyField(BankAccount, blank=True)
+    bank_accounts = models.ManyToManyField(BankAccount, blank=True)
 
     # PREFERENCE
     budget_preference = models.PositiveIntegerField(
@@ -232,7 +243,7 @@ class Company(BaseModelGeneric):
     average_monthly_turnover_last_year = models.IntegerField(blank=True, null=True)
     average_monthly_profit_last_year = models.IntegerField(blank=True, null=True)
     total_debt = models.IntegerField(blank=True, null=True)
-    bank_account = models.ManyToManyField(BankAccount, blank=True)
+    bank_accounts = models.ManyToManyField(BankAccount, blank=True)
     paid_up_capital = models.IntegerField(blank=True, null=True)
     book_value_per_share = models.IntegerField(blank=True, null=True)
 

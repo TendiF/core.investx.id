@@ -17,7 +17,7 @@
 '''
 
 from core.scripts.administrative import *
-from core.scripts.agreement import *
-from core.scripts.numbering import *
+# from core.scripts.agreement import *
+# from core.scripts.numbering import *
 # import_provices()
 # import_regencies()
