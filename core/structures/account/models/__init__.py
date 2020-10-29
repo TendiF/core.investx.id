@@ -266,12 +266,7 @@ class Company(BaseModelGeneric):
         choices=constant.TECHNICAL_SKILL_CHOICES, default=1)
 
     # Media
-    operational_photo = models.FileField(
-        max_length=300,
-        storage=storage.FILE_STORAGE,
-        blank=True,
-        null=True
-    )
+    operational_photo = models.URLField(blank=True, null=True)
     video_url = models.URLField(blank=True, null=True)
 
     # Campaign

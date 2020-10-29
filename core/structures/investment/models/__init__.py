@@ -29,6 +29,8 @@ class CompanyCampaign(BaseModelGeneric):
         choices=constant.CAMPAIGN_STATUS_CHOICES, default=1)
     started = models.DateTimeField(db_index=True)
     time_limit = models.PositiveIntegerField(blank=True, null=True)
+    shares = models.IntegerField(blank=True, null=True)
+    price_per_share = models.IntegerField(blank=True, null=True)
 
     def __str__(self):
         return self.company.name
@@ -47,6 +49,7 @@ class Investment(BaseModelGeneric):
     company = models.ForeignKey(Company, on_delete=models.CASCADE, null=True, blank=True)
     amount = models.IntegerField(blank=True, null=True)
     dividend = models.IntegerField(blank=True, null=True, default=0)
+    shares = models.IntegerField(blank=True, null=True)
 
     # def __init__(self, campaign, user, amount, *args, **kwargs):
     #     super().__init__(*args, **kwargs)
